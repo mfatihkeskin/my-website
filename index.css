@@ -1,0 +1,138 @@
+html,
+body {
+    height: 100%; /* Sayfanın yüksekliğini tam ekran yapar */
+    margin: 0; /* Kenar boşluklarını sıfırlar */
+    padding: 0; /* İç boşlukları sıfırlar */
+}
+
+.screen { /* Ana kapsayıcı (background dahil tüm içerik) */
+    min-height: 100%; /* Ekran yüksekliği kadar alan kaplar */
+    background-size: cover; /* Arka plan resmi tamamen kaplar */
+    background-position: center; /* Arka planı ortalar */
+    background-repeat: no-repeat; /* Tekrarlamayı engeller */
+    background-image: url(assets/bg.jpg); /* Arka plan resmi */
+}
+
+.header_nav { /* Üst menü çubuğu */
+    display: flex; /* Yatay hizalama */
+    justify-content: space-around; /* Menü öğeleri eşit aralıkla yerleşir */
+    align-items: center; /* Dikey ortalama */
+    padding: 10px; /* İç boşluk */
+}
+
+.home_div { /* Menüdeki her bir öğe (ikon + başlık) */
+    margin-top: 10px; /* Üst boşluk */
+    color: white; /* Yazı rengi */
+    text-align: center; /* Yazı ortalanır */
+    display: flex; /* Dikey hizalama */
+    flex-direction: column; /* İkon ve başlığı dikey hizalar */
+    align-items: center; /* Ortalar */
+    text-decoration: none; /* Alt çizgiyi kaldırır */
+    cursor: pointer; /* Üzerine gelince el işareti olur */
+    transition: transform 0.2s; /* Hover animasyonu */
+    position: relative; /* Dropdown pozisyonu için gerekli */
+}
+
+.dropdown { /* Alt açılır menü */
+    display: none; /* Başta gizli */
+    position: absolute; /* Ebeveynine göre konumlanır */
+    top: 100%; /* Tam altına yerleşir */
+    left: 50%; /* Yatayda ortalamaya başlar */
+    transform: translateX(-50%); /* Tam ortalamak için kaydırır */
+    background-color: rgba(0, 0, 0, 0.9); /* Koyu yarı saydam arkaplan */
+    border-radius: 20px; /* Köşeler yuvarlak */
+    padding: 10px; /* İç boşluk */
+    z-index: 10; /* Üstte görünür */
+    min-width: 180px; /* Minimum genişlik */
+    text-align: center; /* Metin ortalanır */
+    font-size: 12px; /* Küçük yazı */
+    opacity: 0; /* Görünmez başta */
+    visibility: hidden; /* Tamamen gizli */
+    transform: translate(-50%, 10px); /* Başta hafif aşağıda */
+    transition: all 0.3s ease; /* Geçiş efekti */
+}
+
+@media (max-width: 768px) { /* Mobil uyum için */
+    .header_nav {
+        flex-direction: column; /* Menü dikey dizilir */
+    }
+}
+
+.dropdown a { /* Açılır menüdeki linkler */
+    display: block; /* Tüm satırı kaplar */
+    padding: 10px; /* İç boşluk */
+    color: white; /* Yazı rengi */
+    text-decoration: none; /* Alt çizgi yok */
+    transition: background-color 0.2s ease; /* Arkaplan geçiş efekti */
+}
+
+.dropdown a:hover { /* Üzerine gelince */
+    background-color: rgba(40, 40, 40, 1); /* Daha koyu arkaplan */
+}
+
+/* Hover (üstüne gelme) efekti */
+.home_div:hover .dropdown { /* Üst menüye gelince alt menüyü açar */
+    display: block; /* Görünür olur */
+    opacity: 1; /* Şeffaflık sıfırlanır */
+    visibility: visible; /* Görünürlük açılır */
+    transform: translate(-50%, 0); /* Yavaşça yukarı kayar */
+}
+
+.home_div:hover { /* Üst menüye gelince büyüme efekti */
+    transform: scale(1.2); /* %20 büyüme */
+}
+
+i { /* Menüdeki ikonlar */
+    color: rgb(40, 180, 168); /* Turkuaz renk */
+}
+
+.header_span { /* Menüdeki yazı */
+    font-size: 18px; /* Yazı büyüklüğü */
+    padding: 10px; /* İç boşluk */
+    color: black; /* Yazı rengi (siyah) */
+    font-weight: bold; /* Kalın yazı */
+}
+
+.title { /* Hoşgeldiniz başlığı */
+    display: flex; /* Dikey hizalama */
+    margin-top: 20px; /* Üst boşluk */
+    flex-direction: column; /* Dikey dizilim */
+    align-items: center; /* Ortalanır */
+}
+
+.info { /* Hakkımda yazısı alanı */
+    display: flex; /* Dikey hizalama */
+    flex-direction: column; /* Dikey dizilim */
+    margin: 7.5%; /* Kenar boşluğu */
+    margin-top: 10px; /* Üst boşluk */
+    color: black; /* Yazı rengi */
+}
+
+.divider { /* Üst çizgi (bölücü) */
+    border-bottom: 2px solid black; /* Alt çizgi */
+    border-radius: 5px; /* Hafif yuvarlak kenar */
+    margin: 10px 5%; /* Kenar boşlukları */
+}
+
+.social-icons { /* Sosyal medya ikonlarını tutan alan */
+    display: flex; /* Yatay hizalama */
+    justify-content: space-between; /* Eşit boşluk */
+    margin: 5% 20%; /* Kenar boşluğu */
+}
+
+.social-icons img { /* Sosyal medya ikonları */
+    width: 50px; /* İkon boyutu */
+    transition: transform 0.2s ease; /* Hover animasyonu */
+}
+
+.social-icons img:hover { /* İkonlara gelince büyüme efekti */
+    transform: scale(1.1); /* %10 büyüme */
+}
+
+.footer { /* Sayfa altındaki footer */
+    text-align: center; /* Ortalanır */
+    padding: 10px; /* İç boşluk */
+    background-color: rgba(0, 0, 0, 0.75); /* Koyu yarı saydam arka plan */
+    color: white; /* Yazı rengi */
+    font-size: 12px; /* Küçük yazı */
+}
